@@ -10,4 +10,5 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = "login"
+
 from app import models, routes  # noqa: F401, E402

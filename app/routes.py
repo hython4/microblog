@@ -5,7 +5,7 @@ from flask import flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required, login_user, logout_user
 
 from app import app, db
-from app.forms import RegistrationForm
+from app.forms import LoginForm, RegistrationForm
 from app.models import User
 
 
@@ -24,7 +24,7 @@ def index():
 def login():
     if current_user.is_authenticated:
         return redirect(url_for("index"))
-    form = RegistrationForm()
+    form = LoginForm()
     if form.validate_on_submit():
         user = db.session.scalar(
             sa.select(User).where(User.username == form.username.data),
